@@ -46,6 +46,9 @@ public class TreeNodeImpl implements TreeNode {
 
     @Override
     public TreeNode getRoot() {
+        if (this.getParent() == null && this.isLeaf()) {
+            return null;
+        }
         if (this.getParent() == null) {
             return this;
         } else {
