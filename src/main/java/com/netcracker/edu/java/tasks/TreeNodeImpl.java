@@ -160,11 +160,7 @@ public class TreeNodeImpl implements TreeNode {
                 TreeNode nextNode = iterator.next();
                 if ((nextNode.getData() != null && nextNode.getData().equals(data)) || (nextNode.getData() == null && nextNode.getData() == data)) {
                     return nextNode;
-                }
-            }
-            while (iterator.hasNext()) {
-                TreeNode nextNode = iterator.next();
-                if (!nextNode.isLeaf()) {
+                } else if(!nextNode.isLeaf()){
                     return nextNode.findChild(data);
                 }
             }
