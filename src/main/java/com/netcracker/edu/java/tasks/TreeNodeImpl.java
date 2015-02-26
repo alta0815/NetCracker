@@ -138,8 +138,8 @@ public class TreeNodeImpl implements TreeNode {
 
     @Override
     public TreeNode findParent(Object data) {
-        if (data != null && this.parent != null) {
-            if (this.getData() != null && this.getData().equals(data)) {
+        if (this.parent != null) {
+            if ((this.getData() != null && this.getData().equals(data)) || (this.getData() == null && this.getData() == data)) {
                 return this;
             } else {
                 return this.getParent().findParent(data);
@@ -151,11 +151,11 @@ public class TreeNodeImpl implements TreeNode {
 
     @Override
     public TreeNode findChild(Object data) {
-        if (data != null && this.children != null) {
+        if (this.children != null) {
             Iterator<TreeNode> iterator = this.getChildrenIterator();
             while (iterator.hasNext()) {
                 TreeNode nextNode = iterator.next();
-                if (nextNode.getData() != null && nextNode.getData().equals(data)) {
+                if ((nextNode.getData() != null && nextNode.getData().equals(data)) || (nextNode.getData() == null && nextNode.getData() == data)) {
                     return nextNode;
                 }
             }
